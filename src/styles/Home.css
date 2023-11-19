@@ -1,0 +1,56 @@
+body{
+    background-color: black;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.left{
+    margin-left: 80px;
+    margin-top: 80px;
+    height: 600px;
+    width: 600px;
+    background-color: rgb(39, 38, 38);
+    border-radius: 5px;
+}
+
+.left img{
+    margin-top: 50px;
+    margin-left: 50px;
+    height: 500px;
+    width: 500px;
+    border-radius: 25px;
+    float: left;
+}
+
+.right{
+    float: right;
+    margin-top: 100px;
+    margin-left: 200px;
+    color: white;
+    text-align: center;
+}
+
+.right img{
+    border-radius: 50px;
+}
+
+.right button{
+    background-color: greenyellow;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.right a{
+    text-decoration: none;
+    background-color: greenyellow;
+    color: black;
+}
