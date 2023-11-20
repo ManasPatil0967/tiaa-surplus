@@ -6,7 +6,7 @@ import datetime as dt
 
 class MCSimulation:
     
-    def __init__(self, portfolio_data, weights="", num_simulation=1000, num_trading_days=252):
+    def __init__(self, portfolio_data, weights="", num_simulation=100, num_trading_days=252):
         
         # Check to make sure that all attributes are set
         if not isinstance(portfolio_data, pd.DataFrame):
