@@ -4,7 +4,7 @@ from montecarlo import MCSimulation
 from flask import Flask, request
 from flask_cors import CORS
 from flask_restful import Resource, Api
-import pandas_datareader as pdr
+from pandas_datareader import data as pdr
 import numpy as np
 import yfinance as yf
 from datetime import datetime
@@ -112,10 +112,8 @@ def crypto_analysis(savings_amount):
     return ci_lower_cumulative_return, ci_upper_cumulative_return
 
 
-yf.pdr_override()
-
-
 def stock_analysis(initial_investment, risk_tolerance):
+    yf.pdr_override()
     initial_investment = int(initial_investment)
     risk_tolerance = float(risk_tolerance)
     stocks = ['AAPL', 'GOOG', 'MSFT', 'AMZN', 'TSLA', 'NVDA']
