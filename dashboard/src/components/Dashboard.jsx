@@ -19,9 +19,36 @@ import { Avatar } from "@mui/material";
 import React from 'react';
 import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
 import "../styles/Dashboard.css";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { db } from "../lib/firebase/config";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "../lib/firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState({});
+
+    const signOutUser = async () => {
+        await signOut();
+        navigate('/');
+    }
+
+    useEffect(() => {
+        onAuthStateChanged(async (user) => {
+            if (user) {
+                setUser(user);
+                console.log(user.uid);
+                const docRef = doc(db, "users", user.uid);
+                const docSnap = await getDoc(docRef);
+                console.log(docSnap.data());
+                setUserData(docSnap.data());
+            } 
+        });
+    }, []);
+
   return (
     <>
        <div style={{ display: "flex", height: "100vh" }}>
@@ -50,7 +77,7 @@ const Dashboard = () => {
                 Notifications
               </MenuItem>
             </SubMenu>
-            <MenuItem icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+            <MenuItem icon={<LogoutRoundedIcon />} onClick={signOutUser} > Logout </MenuItem>
           </Menu>
         </Sidebar>
         <div>
@@ -66,11 +93,11 @@ const Dashboard = () => {
             <div className="ret">
                <h6>Retirement Account</h6>
               <h7>Current Balance</h7>
-              <h4 className="line">INR 10,000.00</h4>
+              <h4 className="line">{userData.Income}</h4>
               <h6>IBAN</h6>
               <h7>AB11 0000 0101 1111 1111</h7>
               <h6>Account Holder</h6>
-              <h7>Sam Altman</h7>
+              <h7>{userData.Name}</h7>
             </div>
             <div className="button">
               <PinIcon/>Share IBAN
