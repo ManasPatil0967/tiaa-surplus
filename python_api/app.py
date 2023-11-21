@@ -100,7 +100,7 @@ def crypto_analysis(savings_amount):
     MC_crypto = MCSimulation(
         portfolio_data=merged_df,
         weights=[.5, .5],
-        num_simulation=100,
+        num_simulation=250,
         num_trading_days=252*5
     )
 
