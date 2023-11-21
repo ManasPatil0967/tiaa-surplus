@@ -19,7 +19,7 @@ import { Avatar } from "@mui/material";
 import React from 'react';
 import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
 import "../styles/Dashboard.css";
-import { collection, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../lib/firebase/config";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "../lib/firebase/auth";
@@ -40,10 +40,8 @@ const Dashboard = () => {
         onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user);
-                console.log(user.uid);
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
-                console.log(docSnap.data());
                 setUserData(docSnap.data());
             } 
         });

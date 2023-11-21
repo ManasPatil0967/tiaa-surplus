@@ -1,6 +1,6 @@
 import { auth,db } from './config'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { addDoc,setDoc,doc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 
 
 export function onAuthStateChanged(callback) {
@@ -20,7 +20,6 @@ export async function login(email, password){
         await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             const user = userCredential.user;
             console.log("User: ",user.uid);
-            console.log("Pappu Pass");
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
