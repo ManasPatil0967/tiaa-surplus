@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import "../styles/signup.css";
 import { register } from "./../lib/firebase/auth";
@@ -20,10 +19,6 @@ function SignUpForm() {
       await register(name, email, password, age, income, retirementIncome);
 
       console.log("Registration successful!");
-
-      const response = await axios.post('https://tiaa-surplus-api.onrender.com/stocks', { initial_investment: income, risk_tolerance: 0.2 });
-        
-      console.log(response.data);
 
         navigate('/dashboard');
     } catch (error) {
