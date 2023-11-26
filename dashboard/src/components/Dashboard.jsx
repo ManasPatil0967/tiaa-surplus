@@ -30,11 +30,6 @@ const Dashboard = () => {
         <div>
           <h1 style={{marginLeft: "20px",marginTop: "-10px"}}>Welcome {userData.Name}!</h1>
           <div className="payer">
-            <h3 style={{marginLeft: "50px", marginTop: "-50px"}}>Select payer</h3>
-            <select className="sel">
-             <option value="someOption">Income Source</option>
-             <option value="otherOption">Other option</option>
-            </select>
             <div className="ret">
                <h6>Retirement Account</h6>
               <h7>Current Balance</h7>

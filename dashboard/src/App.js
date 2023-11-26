@@ -5,7 +5,7 @@ import Home from './components/Home';
 import LoginForm from './components/Login';
 import SignUpForm from './components/Signup';
 import Recommend from './components/Recommend';
-
+import TnC from './components/TnC';
 
 const App = () => { 
   return (
@@ -16,6 +16,8 @@ const App = () => {
           <Route path='/signup' element={<SignUpForm/>} />
           <Route path='/login' element={<LoginForm/>} />
           <Route path='/recommend' element={<Recommend/>} />
+          <Route path='/tnc' element={<TnC/>} />
+
       </Routes>
     </>
   )

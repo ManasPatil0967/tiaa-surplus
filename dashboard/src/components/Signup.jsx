@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/signup.css";
 import { register } from "./../lib/firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from './../lib/firebase/auth';
 
 function SignUpForm() {
   const [name, setName] = useState('');
@@ -11,6 +12,13 @@ function SignUpForm() {
   const [age, setAge] = useState('');
   const [retirementIncome, setRetirementIncome] = useState('');
   const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged((user) => {
+      if (user) {
+        navigate('/dashboard');
+      }
+    });
+    }, []);
   
     const handleSubmit = async (event) => {
     event.preventDefault();

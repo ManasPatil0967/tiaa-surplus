@@ -1,8 +1,7 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SideNavBar from './SideNavBar';
 import "../styles/Dashboard.css";
-import { calculateRisk } from '../helpers/risk';
 import { db } from '../lib/firebase/config';
 import { onAuthStateChanged } from '../lib/firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -19,32 +18,31 @@ const Recommend = () => {
         onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user);
-                await getUserData(user).then((data) => {
-                    setUserData(data);
-                });
+                const docRef = doc(db, "users", user.uid);
+                const docSnap = await getDoc(docRef);
+                setUserData(docSnap.data());
                 console.log(userData);
-                setIncome(userData.Income);
-                await getCrypto();
-                await getStocks();
-                setRetirement(parseInt(stocks.split(":").pop().replace("}","")) + parseInt(crypto.split(":").pop().replace("}","")));
             }
         });
-    }, []) ;
+    }, []);
 
-    const getUserData = async (user) => {
-        try {
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-            return docSnap.data();
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        if (userData.Income) {
+            setIncome(userData.Income);
+            getCrypto();
+            getStocks();
         }
-    }
+    }, [userData]);
+
+    useEffect(() => {
+        if (stocks && crypto) {
+            setRetirement(parseInt(stocks.split(":").pop().replace("}","")) + parseInt(crypto.split(":").pop().replace("}","")));
+        }
+    }, [stocks, crypto]);
 
     const getCrypto = async () => {
         try {
             const res = await axios.post('https://tiaa-surplus-api.onrender.com/crypto', { savings_amount : parseInt(userData.Income) });
-            console.log(res.data);
             setCrypto(JSON.stringify(res.data));
         } catch (error) {
             console.log(error);
@@ -54,7 +52,6 @@ const Recommend = () => {
     const getStocks= async () => {
         try {
             const res = await axios.post('https://tiaa-surplus-api.onrender.com/stocks', { initial_investment: parseInt(userData.Income)  , risk_tolerance: 0.2});
-            console.log(res.data);
             setStocks(JSON.stringify(res.data));
         } catch (error) {
             console.log(error);
