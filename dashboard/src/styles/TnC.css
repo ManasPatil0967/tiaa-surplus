@@ -1,0 +1,42 @@
+
+.payer {
+    padding: 20px;
+    background-color: #212121;
+    flex-grow: 1;
+    font-family: 'Roboto', sans-serif; 
+    color: #ffffff; 
+  }
+  
+  .payer h4 {
+    font-size: 24px;
+    color: #ffffff;
+    display: flex;
+    align-items: center; 
+    padding-bottom: 10px; 
+  }
+  
+  .payer h4 svg {
+    margin-right: 10px; 
+  }
+  
+  .payer h5 {
+    font-size: 20px;
+    color: #ffffff;
+    display: flex;
+    align-items: center; 
+    padding-bottom: 10px; 
+  }
+  
+  .payer h5 svg {
+    margin-right: 10px; 
+  }
+  
+  .payer p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #cccccc; 
+    padding-bottom: 10px; 
+  }
+  
+
+  

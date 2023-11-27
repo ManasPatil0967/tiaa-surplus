@@ -13,7 +13,7 @@ const Home = () => {
      </div>
      <div className="right">
         <img src={icon} alt='hwo'/>
-        <h1>WELCOME TO SURPLUS!</h1>
+        <h1 style={{color:"white"}}>WELCOME TO SURPLUS!</h1>
         <h5>Manage your retirement finances with ease</h5>
         <button><Link to={"/signup"}>Sign Up</Link></button>
         <button><Link to={"/login"}>Login</Link></button>

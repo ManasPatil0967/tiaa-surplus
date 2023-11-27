@@ -68,17 +68,17 @@ const Recommend = () => {
         <div className='ret'>
         <h1>Stocks</h1>
         <h1>$ {stocks.split(":").pop().replace("}","")}</h1>
-    </div>
-    <div className='ret'>
-    <h1>Crypto</h1>
-    <h1>$ {crypto.split(":").pop().replace("}","")}</h1>
-    </div>
-    <div className='ret'>
-    <h1>Your portfolio</h1>
-    <h1>$ {retirement}</h1>
-    </div>
-    </div>
-    </div>
+        </div>
+        <div className='ret'>
+        <h1>Crypto</h1>
+        <h1>$ {crypto.split(":").pop().replace("}","")}</h1>
+        </div>
+        <div className='ret'>
+        <h1>Your portfolio</h1>
+        <h1>$ {retirement}</h1>
+        </div>
+        </div>
+        </div>
     )
 }
 

@@ -28,7 +28,7 @@ const Dashboard = () => {
        <div style={{ display: "flex", height: "100vh" }}>
       <SideNavBar />
         <div>
-          <h1 style={{marginLeft: "20px",marginTop: "-10px"}}>Welcome {userData.Name}!</h1>
+          <h1 style={{color:"white", marginLeft: "20px",marginTop: "20px"}}>Welcome {userData.Name}!</h1>
           <div className="payer">
             <div className="ret">
                <h6>Retirement Account</h6>
@@ -36,11 +36,13 @@ const Dashboard = () => {
               <h4 className="line">{userData.Income}</h4>
               <h6>User Name</h6>
               <h7>{userData.Name}</h7>
+              <h6>User Age</h6>
+              <h7>{userData.Age}</h7>
             </div>
-            <div className="ben">
-              <h4>Saved Beneficiaries</h4>
-              <button>Add New</button>
-              <Avatar>A</Avatar>
+            <div className="ben" >
+              <h4 style={{marginLeft:"20px"}}>Saved Beneficiaries</h4>
+              <button style={{marginLeft:"20px"}}>Add New</button>
+              <Avatar style={{marginLeft:"20px", marginTop:"5px"}}>A</Avatar>
             </div>
           </div>
         </div>

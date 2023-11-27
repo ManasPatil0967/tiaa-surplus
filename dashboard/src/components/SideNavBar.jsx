@@ -7,7 +7,6 @@ import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
 import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
