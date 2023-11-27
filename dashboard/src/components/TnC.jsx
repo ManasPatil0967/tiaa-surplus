@@ -6,7 +6,7 @@ const TnC = () => {
     return (
         <div style={{ display: "flex", height: "100vh" }}>
             <SideNavBar />
-            <div className="payer">
+            <div className="payer" style={{color:'white', marginLeft:20}}>
                 <h1>Terms and Conditions</h1>
                 <p>
                     Please read these terms and conditions carefully before using Our Service.

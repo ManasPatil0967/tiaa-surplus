@@ -42,7 +42,7 @@ const Recommend = () => {
 
     const getCrypto = async () => {
         try {
-            const res = await axios.post('https://tiaa-surplus-api.onrender.com/crypto', { savings_amount : parseInt(userData.Income) });
+            const res = await axios.post('https://tiaa-surplus-api.onrender.com/crypto', { savings_amount : parseInt(userData.Income)/2 });
             setCrypto(JSON.stringify(res.data));
         } catch (error) {
             console.log(error);
@@ -51,7 +51,7 @@ const Recommend = () => {
 
     const getStocks= async () => {
         try {
-            const res = await axios.post('https://tiaa-surplus-api.onrender.com/stocks', { initial_investment: parseInt(userData.Income)  , risk_tolerance: 0.2});
+            const res = await axios.post('https://tiaa-surplus-api.onrender.com/stocks', { initial_investment: parseInt(userData.Income)/2  , risk_tolerance: 0.2});
             setStocks(JSON.stringify(res.data));
         } catch (error) {
             console.log(error);
@@ -60,24 +60,25 @@ const Recommend = () => {
 
     return (
         <div style={{ display: "flex", height: "100vh" }}>
-            <SideNavBar />
-            <div className="payer">
-            <h1>Recommendations for {userData.Name}</h1>
-            <h1>Retirement Account</h1>
-            <h1>Current Balance</h1>
-            <h2 className="line">{userData.Income}</h2>
-            <h1>User Name</h1>
-            <h2>{userData.Name}</h2>
-            <div>
-            <h1>Stocks</h1>
-            <h1>{stocks.split(":").pop().replace("}","")}</h1>
-            <h1>Crypto</h1>
-            <h1>{crypto.split(":").pop().replace("}","")}</h1>
-            <h1>Your portfolio performance</h1>
-            <h1>{retirement}</h1>
-            </div>
-            </div>
-        </div>
+        <SideNavBar />
+        <div className="payer" style={{marginLeft:20, alignItems:'center', justifyItems:'center'}}>
+        <h2>Recommendations for {userData.Name} over 1 Year period</h2>
+        <h2>Current Balance</h2>
+        <h2 className="line">$ {userData.Income}</h2>
+        <div className='ret'>
+        <h1>Stocks</h1>
+        <h1>$ {stocks.split(":").pop().replace("}","")}</h1>
+    </div>
+    <div className='ret'>
+    <h1>Crypto</h1>
+    <h1>$ {crypto.split(":").pop().replace("}","")}</h1>
+    </div>
+    <div className='ret'>
+    <h1>Your portfolio</h1>
+    <h1>$ {retirement}</h1>
+    </div>
+    </div>
+    </div>
     )
 }
 
